@@ -1,0 +1,52 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\DanielEsteban\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add parcel-bundler
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\xampp\php;C:\sonar-runner\bin;C:\Program Files\MongoDB\Server\3.2\bin\;C:\Program Files\Redis\;C:\Program Files (x86)\GnuWin32\bin\;C:\Program Files\Git\cmd;C:\Program Files\Amazon\AWSCLI\aws.exe;C:\Python27\python.exe;C:\Users\DanielEsteban\Downloads\geckodriver-v0.15.0-win64/geckodriver;C:\Program Files\nodejs\;C:\PostgreSQL\pg10\bin;C:\HashiCorp\Vagrant\bin;C:\Program Files\heroku\bin;C:\Program Files\Microsoft VS Code\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\sonar-runner\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Skype\Phone\; C:\Users\DanielEsteban\nodeScripts\node_modules\mocha\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\sonar-runner\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Skype\Phone\;C:\Users\DanielEsteban\nodeScripts\node_modules\casperjs\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\Windows\system32;C:\;C:\Users\DanielEsteban\AppData\Local\.meteor\;C:\Users\DanielEsteban\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Python27\Scripts;C:\Program Files (x86)\Java\jdk1.8.0_31\bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.4.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\DanielEsteban\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141292:19)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:106:13)
+      at ClientRequest.emit (events.js:208:7)
+      at TLSSocket.emitTimeout (_http_client.js:711:34)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:106:13)
+      at TLSSocket.emit (events.js:208:7)
+      at TLSSocket.Socket._onTimeout (net.js:420:8)
+      at ontimeout (timers.js:482:11)
+
+npm manifest: 
+  {
+    "name": "rickandmorty",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "prettier": "prettier --write \"src/**/*.{js,jsx}\"",
+      "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Daniel Puerta",
+    "license": "MIT",
+    "devDependencies": {
+      "eslint": "^6.8.0",
+      "eslint-config-prettier": "^6.9.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
