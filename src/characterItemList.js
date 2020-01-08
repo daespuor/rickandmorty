@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
-const CharacterItemList = ({ data }) => {
+import { colors } from "./colors";
+const CharacterItemList = ({ data, index }) => {
   const { image, name, count } = data;
   return (
     <div
@@ -8,11 +9,13 @@ const CharacterItemList = ({ data }) => {
       css={css`
         display: flex;
         justify-content: space-between;
-        border: 1px solid #000;
-        border-radius: 3px;
+        border: 0px solid #000;
+        border-radius: 10px;
         width: 50%;
         margin: auto;
         margin-top: 15px;
+        background-color: ${colors.$backgroundLevel3};
+        overflow: hidden;
       `}
     >
       <div
@@ -32,7 +35,18 @@ const CharacterItemList = ({ data }) => {
         />
         <b>{name}</b>
       </div>
-      <b>{count}</b>
+      <b
+        css={css`
+          color: ${colors.$subtitleText};
+          font-size: 3em;
+          font-weight: bold;
+          position: relative;
+          right: 100px;
+          top: 15px;
+        `}
+      >
+        {count}
+      </b>
     </div>
   );
 };

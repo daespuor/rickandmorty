@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
-import CharacterSelection from "./characterSelection";
-import CharacterList from "./characterList";
-import { css } from "@emotion/core";
+import CharactersWithLikesContext from "./charactersWithLikesContext";
+import GlobalStyles from "./globalStyles";
+import Header from "./header";
+import CharactersContent from "./charactersContent";
 const App = () => {
+  const charactersWithLikesState = useState([]);
   return (
-    <div
-      css={css`
-        padding: 30px;
-        text-align: center;
-        margin: 0px;
-      `}
-    >
-      <h1>Rick and Morty Favorites</h1>
-      <h3>Which one is your favorite?</h3>
-      <CharacterSelection />
-      <CharacterList />
-    </div>
+    <CharactersWithLikesContext.Provider value={charactersWithLikesState}>
+      <GlobalStyles />
+      <Header />
+      <CharactersContent />
+    </CharactersWithLikesContext.Provider>
   );
 };
 

@@ -1,31 +1,49 @@
-import React,{useState, useEffect} from 'react';
-import {css} from '@emotion/core';
+import React, { useState, useEffect, useContext } from "react";
+import CharactersWithLikesContext from "./charactersWithLikesContext";
+import CharacterComponent from "./characterComponent";
 
+const Character = () => {
+  const [charactersWithlikes, setcharactersWithLikes] = useContext(
+    CharactersWithLikesContext
+  );
 
-const Character= ()=>{
-    const [character,setCharacter] = useState({});
-    useEffect(()=>{
-        fetch('https://rickandmortyapi.com/api/character/2')
-        .then((response)=> {
-            return response.json();
-        })
-        .then((object)=> {
-            setCharacter(object);
-        });
-    },[]);
-    return (
-        <div className="character" css={
-            css`padding: 10px;
-            border: 1px solid #000;
-            border-radius: 3px;
-            margin: 0px;
-            text-align: center;`
-        }>
-            <img src={character.image} />
-            <h3>{character.name}</h3>
-            <button>Like</button>
-        </div>    
-    )
-}
+  const [character, setCharacter] = useState({});
+  useEffect(() => {
+    setCharacter({});
+    const registry = getRandomInt(1, 493);
+    fetch(`https://rickandmortyapi.com/api/character/${registry}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(object => {
+        setCharacter(object);
+      });
+  }, [charactersWithlikes]);
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  function onClick(character) {
+    let newCharacters = [...charactersWithlikes];
+    const index = charactersWithlikes.findIndex(
+      characterWithLikes =>
+        Number(characterWithLikes.id) === Number(character.id)
+    );
+    if (index !== -1) {
+      newCharacters[index] = Object.assign({}, newCharacters[index], {
+        count: newCharacters[index].count + 1
+      });
+    } else {
+      newCharacters.push(Object.assign({}, character, { count: 1 }));
+    }
+    setcharactersWithLikes(newCharacters);
+  }
+
+  return (
+    <>
+      <CharacterComponent character={character} onClick={onClick} />
+    </>
+  );
+};
 
 export default Character;
