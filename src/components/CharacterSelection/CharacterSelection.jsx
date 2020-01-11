@@ -1,11 +1,10 @@
 import React from "react";
-import Character from "./character";
+import { Character } from "../../containers";
 import { css } from "@emotion/core";
 
-const CharacterSelection = () => {
+export const CharacterSelection = () => {
   return (
     <div
-      className="characterSelection"
       css={css`
         width: 100%;
         padding: 5px;
@@ -18,5 +17,3 @@ const CharacterSelection = () => {
     </div>
   );
 };
-
-export default CharacterSelection;

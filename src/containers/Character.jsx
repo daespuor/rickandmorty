@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import CharactersWithLikesContext from "./charactersWithLikesContext";
-import CharacterComponent from "./characterComponent";
+import CharactersWithLikesContext from "../charactersWithLikesContext";
+import { CharacterComponent } from "../components/CharacterComponent";
 
-const Character = () => {
+export const Character = () => {
   const [charactersWithlikes, setcharactersWithLikes] = useContext(
     CharactersWithLikesContext
   );
@@ -45,5 +45,3 @@ const Character = () => {
     </>
   );
 };
-
-export default Character;

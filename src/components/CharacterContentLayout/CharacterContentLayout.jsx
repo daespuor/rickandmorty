@@ -1,9 +1,9 @@
 import React from "react";
-import CharacterSelection from "./characterSelection";
-import CharacterList from "./characterList";
+import { CharacterSelection } from "../CharacterSelection";
+import { CharacterList } from "../../containers";
 import { css } from "@emotion/core";
-import { colors } from "./colors";
-const CharactersContent = () => (
+import { colors } from "../../colors";
+export const CharactersContentLayout = () => (
   <div
     css={css`
       background-color: ${colors.$backgroundLevel2};
@@ -16,5 +16,3 @@ const CharactersContent = () => (
     <CharacterList />
   </div>
 );
-
-export default CharactersContent;
