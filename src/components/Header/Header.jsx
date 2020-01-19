@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
-import {colors} from "./colors";
-const Header = () => {
+import { colors } from "../../colors";
+export const Header = () => {
   return (
     <div
       css={css`
@@ -43,5 +43,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

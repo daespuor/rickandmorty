@@ -8,5 +8,6 @@
         "sourceMap": false
       }
     ]
-  ]
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }

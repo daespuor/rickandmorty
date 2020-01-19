@@ -1,9 +1,7 @@
 import React from "react";
-import { CharacterSelection } from "../CharacterSelection";
-import { CharacterList } from "../../containers";
 import { css } from "@emotion/core";
 import { colors } from "../../colors";
-export const CharactersContentLayout = () => (
+export const CharactersContentLayout = ({ children }) => (
   <div
     css={css`
       background-color: ${colors.$backgroundLevel2};
@@ -12,7 +10,6 @@ export const CharactersContentLayout = () => (
       padding-bottom: 20px;
     `}
   >
-    <CharacterSelection />
-    <CharacterList />
+    {children}
   </div>
 );

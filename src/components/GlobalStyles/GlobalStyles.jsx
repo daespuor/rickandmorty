@@ -1,8 +1,8 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
-import font from "./fonts/get_schwifty.ttf";
-import { colors } from "./colors";
-const GlobalStyles = () => {
+import font from "../../fonts/get_schwifty.ttf";
+import { colors } from "../../colors";
+export const GlobalStyles = () => {
   return (
     <Global
       styles={css`
@@ -25,5 +25,3 @@ const GlobalStyles = () => {
     />
   );
 };
-
-export default GlobalStyles;
