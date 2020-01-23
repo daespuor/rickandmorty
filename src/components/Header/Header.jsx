@@ -35,7 +35,7 @@ export const Header = () => {
           width: 50%;
           position: absolute;
           left: 25%;
-          top: 80px;
+          top: 120px;
         `}
       >
         Which one is your favorite?
