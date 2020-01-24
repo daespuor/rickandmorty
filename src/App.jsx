@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { GlobalStyles } from "./components/GlobalStyles";
-import { CharacterFavoriteList } from "./components/CharacterFavoriteList";
-import { Dashboard } from "./components/Dashboard";
+import { GlobalStyles } from "./core/GlobalStyles";
+import { CharacterFavoriteList } from "./CharacterFavoriteList";
+import { Dashboard } from "./Dashboard";
 import { Router } from "@reach/router";
-import CharactersWithLikesContext from "./charactersWithLikesContext";
+import CharactersWithLikesContext from "./core/charactersWithLikesContext";
+import { Navbar } from "./shared/Navbar";
 export const App = () => {
   const charactersWithLikesState = useState([]);
   return (
     <>
       <GlobalStyles />
+      <Navbar />
       <CharactersWithLikesContext.Provider value={charactersWithLikesState}>
         <Router>
           <CharacterFavoriteList path="/" />

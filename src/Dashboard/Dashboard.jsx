@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { colors } from "../../colors";
-import { CharactersContentLayout } from "../CharacterContentLayout";
+import { colors } from "../colors";
+import { CharactersContentLayout } from "../shared/CharacterContentLayout";
 import * as d3 from "d3";
-import { Navbar } from "../Navbar/index.js";
-import CharactersWithLikesContext from "../../charactersWithLikesContext.js";
+import CharactersWithLikesContext from "../core/charactersWithLikesContext";
 export const Dashboard = () => {
   const [charactersWithLikes] = useContext(CharactersWithLikesContext);
 
@@ -13,7 +12,6 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Navbar />
       <CharactersContentLayout>
         <svg></svg>
       </CharactersContentLayout>

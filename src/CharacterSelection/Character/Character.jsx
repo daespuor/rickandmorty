@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "../Button";
-import { Card, CardBody, CardHeader, CardImage, CardFade } from "../Card";
+import { Button } from "../../shared/Button";
+import { Card, CardBody, CardHeader, CardImage, CardFade } from "./Card";
 
-export const CharacterComponent = ({ character, onClick }) => (
+export const Character = ({ character, onClick }) => (
   <Card>
     {character.image && (
       <CardFade isFadeIn={character.image}>

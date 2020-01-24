@@ -1,15 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
-import CharactersWithLikesContext from "../charactersWithLikesContext";
-import { CharacterComponent } from "../components/CharacterComponent";
+import React, { useContext, useState, useEffect } from "react";
+import { Character } from "./Character";
+import { CharacterSelectionLayout } from "./CharacterSelectionLayout";
+import CharactersWithLikesContext from "../core/charactersWithLikesContext";
 
-export const Character = () => {
+export const CharacterSelection = () => {
   const [charactersWithlikes, setcharactersWithLikes] = useContext(
     CharactersWithLikesContext
   );
 
-  const [character, setCharacter] = useState({});
+  const [firstCharacter, setFirstCharacter] = useState({});
+  const [secondCharacter, setSecondCharacter] = useState({});
   useEffect(() => {
-    setCharacter({});
+    setFirstCharacter({});
+    setSecondCharacter({});
+    getCharacter(setFirstCharacter);
+    getCharacter(setSecondCharacter);
+  }, [charactersWithlikes]);
+
+  function getCharacter(setCharacter) {
     const registry = getRandomInt(1, 493);
     fetch(`https://rickandmortyapi.com/api/character/${registry}`)
       .then(response => {
@@ -18,7 +26,7 @@ export const Character = () => {
       .then(object => {
         setCharacter(object);
       });
-  }, [charactersWithlikes]);
+  }
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -38,10 +46,10 @@ export const Character = () => {
     }
     setcharactersWithLikes(newCharacters);
   }
-
   return (
-    <>
-      <CharacterComponent character={character} onClick={onClick} />
-    </>
+    <CharacterSelectionLayout>
+      <Character character={firstCharacter} onClick={onClick} />
+      <Character character={secondCharacter} onClick={onClick} />
+    </CharacterSelectionLayout>
   );
 };

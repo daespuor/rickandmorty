@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import { colors } from "../../colors";
+import { colors } from "../../../colors";
 
 export const ListItem = ({ children }) => (
   <div

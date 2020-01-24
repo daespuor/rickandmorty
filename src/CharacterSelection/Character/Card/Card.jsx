@@ -1,6 +1,6 @@
 import React from "react";
 import { css, keyframes } from "@emotion/core";
-import { colors } from "../../colors";
+import { colors } from "../../../colors";
 
 const fadeIn = keyframes`
     0%{
@@ -79,5 +79,6 @@ export const CardImage = ({ src }) => (
       height: 300px;
       border-radius: 10px 10px 0px 0px;
     `}
+    alt="character-card"
   />
 );

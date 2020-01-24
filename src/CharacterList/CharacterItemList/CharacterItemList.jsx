@@ -4,8 +4,8 @@ import {
   ListItemLeft,
   ListItemImage,
   ListItemText
-} from "../ListItem";
-export const CharacterItemList = ({ data, index }) => {
+} from "./ListItem";
+export const CharacterItemList = ({ data }) => {
   const { image, name, count } = data;
   return (
     <ListItem>
