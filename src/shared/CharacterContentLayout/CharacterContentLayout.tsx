@@ -1,7 +1,12 @@
-import React from "react";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import React, { ReactChild } from "react";
+import { css, jsx } from "@emotion/core";
 import { colors } from "../../colors";
-export const CharactersContentLayout = ({ children }) => (
+export const CharactersContentLayout = ({
+  children
+}: {
+  children: ReactChild[] | ReactChild;
+}) => (
   <div
     css={css`
       background-color: ${colors.$backgroundLevel2};

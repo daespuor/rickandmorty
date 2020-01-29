@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import React from "react";
 import { Link } from "@reach/router";
-import { css } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import { colors } from "../../colors";
 
 export const Navbar = () => (

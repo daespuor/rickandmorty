@@ -1,9 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, FunctionComponent } from "react";
 import { colors } from "../colors";
 import { CharactersContentLayout } from "../shared/CharacterContentLayout";
 import * as d3 from "d3";
 import CharactersWithLikesContext from "../core/charactersWithLikesContext";
-export const Dashboard = () => {
+import { Character } from "../core/models/Character";
+interface Link {
+  source: number;
+  target: number;
+}
+export const Dashboard: FunctionComponent<{
+  path: string;
+}> = () => {
   const [charactersWithLikes] = useContext(CharactersWithLikesContext);
 
   useEffect(() => {
@@ -13,13 +20,13 @@ export const Dashboard = () => {
   return (
     <>
       <CharactersContentLayout>
-        <svg></svg>
+        <svg />
       </CharactersContentLayout>
     </>
   );
 };
 
-function populateDashboard(data) {
+function populateDashboard(data: Character[]) {
   const links = getLinks(data);
   const nodes = [...data];
   const width = 900;
@@ -35,7 +42,7 @@ function populateDashboard(data) {
       "links",
       d3
         .forceLink(links)
-        .id(d => d.id)
+        .id((d: Character) => d.id)
         .distance(100)
     )
     .force(
@@ -67,8 +74,10 @@ function populateDashboard(data) {
     .enter()
     .append("path")
     .attr("class", "link")
-    .style("stroke", colors.$backgroundInternal2)
-    .style("fill", d => colorScale(d.source.origin.name));
+    .style("stroke", colors.$backgroundLevel2)
+    .style("fill", (d: { source: Character }) =>
+      colorScale(d.source.origin.name)
+    );
 
   const nodeEnter = svg
     .selectAll("node")
@@ -76,7 +85,7 @@ function populateDashboard(data) {
     .enter()
     .append("g")
     .attr("class", "node")
-    .attr("transform", function(d) {
+    .attr("transform", (d: { x: number; y: number }) => {
       return "translate(" + d.x + "," + d.y + ")";
     });
 
@@ -87,16 +96,16 @@ function populateDashboard(data) {
 
   nodeEnter
     .append("image")
-    .attr("href", d => d.image)
+    .attr("href", (d: Character) => d.image)
     .attr("x", -25)
     .attr("y", -25)
     .attr("width", 70)
     .attr("height", 70);
 
-  nodeEnter.append("title").text(d => d.name);
+  nodeEnter.append("title").text((d: Character) => d.name);
 
-  let path = svg.selectAll("path.link");
-  let node = svg.selectAll("g.node");
+  const path = svg.selectAll("path.link");
+  const node = svg.selectAll("g.node");
 
   /* Create legend */
   const legend = d3
@@ -107,7 +116,7 @@ function populateDashboard(data) {
     .enter()
     .append("g")
     .attr("class", "legend")
-    .attr("transform", function(d, i) {
+    .attr("transform", (_: {}, i: number) => {
       const height = legendRectSize;
       const x = 0;
       const y = i * height;
@@ -126,49 +135,58 @@ function populateDashboard(data) {
     .attr("x", legendRectSize + legendSpacing)
     .attr("y", legendRectSize - legendSpacing)
     .attr("fill", colors.$background)
-    .text(d => d);
+    .text((d: string) => d);
 
   /*Start simulation*/
   simulation.on("tick", () => {
-    path.attr("d", d => {
-      const dx = d.target.x - d.source.x,
-        dy = d.target.y - d.source.y,
-        dr = Math.sqrt(dx * dx + dy * dy);
-      return (
-        "M" +
-        d.source.x +
-        "," +
-        d.source.y +
-        "A" +
-        dr +
-        "," +
-        dr +
-        " 0 0,1 " +
-        d.target.x +
-        "," +
-        d.target.y
-      );
-    });
-    node.attr("transform", d => {
-      d.x = Math.max(
-        maxNodeSize,
-        Math.min(width - (d.imgwidth / 2 || 16), d.x)
-      );
-      d.y = Math.max(
-        maxNodeSize,
-        Math.min(height - (d.imgheight / 2 || 16), d.y)
-      );
-      return "translate(" + d.x + "," + d.y + ")";
-    });
+    path.attr(
+      "d",
+      (d: {
+        target: { x: number; y: number };
+        source: { x: number; y: number };
+      }) => {
+        const dx = d.target.x - d.source.x;
+        const dy = d.target.y - d.source.y;
+        const dr = Math.sqrt(dx * dx + dy * dy);
+        return (
+          "M" +
+          d.source.x +
+          "," +
+          d.source.y +
+          "A" +
+          dr +
+          "," +
+          dr +
+          " 0 0,1 " +
+          d.target.x +
+          "," +
+          d.target.y
+        );
+      }
+    );
+    node.attr(
+      "transform",
+      (d: { imgwidth: number; imgheight: number; x: number; y: number }) => {
+        d.x = Math.max(
+          maxNodeSize,
+          Math.min(width - (d.imgwidth / 2 || 16), d.x)
+        );
+        d.y = Math.max(
+          maxNodeSize,
+          Math.min(height - (d.imgheight / 2 || 16), d.y)
+        );
+        return "translate(" + d.x + "," + d.y + ")";
+      }
+    );
   });
 }
 
-function getOrigins(nodes) {
+function getOrigins(nodes: Character[]): string[] {
   return nodes.map(node => node.origin.name);
 }
 
-function getLinks(nodes) {
-  const links = [];
+function getLinks(nodes: Character[]): Link[] {
+  const links: Link[] = [];
   nodes.forEach((node, index) => {
     for (let nextIndex = index + 1; nextIndex < nodes.length; nextIndex++) {
       const nextNode = nodes[nextIndex];
@@ -177,7 +195,7 @@ function getLinks(nodes) {
         nextNode.origin &&
         node.origin.name === nextNode.origin.name
       ) {
-        const newLink = {
+        const newLink: Link = {
           source: node.id,
           target: nextNode.id
         };

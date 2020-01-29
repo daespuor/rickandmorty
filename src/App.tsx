@@ -5,8 +5,9 @@ import { Dashboard } from "./Dashboard";
 import { Router } from "@reach/router";
 import CharactersWithLikesContext from "./core/charactersWithLikesContext";
 import { Navbar } from "./shared/Navbar";
+import { Character } from "./core/models/Character";
 export const App = () => {
-  const charactersWithLikesState = useState([]);
+  const charactersWithLikesState = useState([] as Character[]);
   return (
     <>
       <GlobalStyles />

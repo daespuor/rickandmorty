@@ -1,9 +1,12 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Header } from "./Header";
 import { CharactersContentLayout } from "../shared/CharacterContentLayout";
 import { CharacterSelection } from "../CharacterSelection";
 import { CharacterList } from "../CharacterList";
-export const CharacterFavoriteList = () => {
+import { RouteComponentProps } from "@reach/router";
+export const CharacterFavoriteList: FunctionComponent<{
+  path: string;
+}> = () => {
   return (
     <>
       <Header />

@@ -5,7 +5,8 @@ import {
   ListItemImage,
   ListItemText
 } from "./ListItem";
-export const CharacterItemList = ({ data }) => {
+import { Character } from "../../core/models/Character";
+export const CharacterItemList = ({ data }: { data: Character }) => {
   const { image, name, count } = data;
   return (
     <ListItem>
@@ -13,7 +14,7 @@ export const CharacterItemList = ({ data }) => {
         <ListItemImage src={image} name={name} />
         <b>{name}</b>
       </ListItemLeft>
-      <ListItemText>{count}</ListItemText>
+      <ListItemText>{count ? count : 0}</ListItemText>
     </ListItem>
   );
 };

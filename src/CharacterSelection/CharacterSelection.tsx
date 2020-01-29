@@ -28,11 +28,11 @@ export const CharacterSelection = () => {
       });
   }
 
-  function getRandomInt(min, max) {
+  function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-  function onClick(character) {
-    let newCharacters = [...charactersWithlikes];
+  function onClick(character): void {
+    const newCharacters = [...charactersWithlikes];
     const index = charactersWithlikes.findIndex(
       characterWithLikes =>
         Number(characterWithLikes.id) === Number(character.id)

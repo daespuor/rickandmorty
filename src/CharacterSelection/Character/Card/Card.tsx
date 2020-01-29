@@ -1,5 +1,6 @@
-import React from "react";
-import { css, keyframes } from "@emotion/core";
+/** @jsx jsx */
+import React, { ReactChild } from "react";
+import { css, jsx, keyframes } from "@emotion/core";
 import { colors } from "../../../colors";
 
 const fadeIn = keyframes`
@@ -19,7 +20,7 @@ const fadeOut = keyframes`
       }
   `;
 
-export const Card = ({ children }) => (
+export const Card = ({ children }: { children: ReactChild | ReactChild[] }) => (
   <div
     css={css`
       padding: 0;
@@ -36,7 +37,13 @@ export const Card = ({ children }) => (
   </div>
 );
 
-export const CardFade = ({ isFadeIn, children }) => (
+export const CardFade = ({
+  isFadeIn,
+  children
+}: {
+  isFadeIn: boolean | string;
+  children: ReactChild[];
+}) => (
   <div
     css={css`
       animation: ${isFadeIn ? fadeIn : fadeOut} linear 3s;
@@ -46,7 +53,11 @@ export const CardFade = ({ isFadeIn, children }) => (
   </div>
 );
 
-export const CardHeader = ({ children }) => (
+export const CardHeader = ({
+  children
+}: {
+  children: ReactChild | ReactChild[];
+}) => (
   <div
     className="character-content"
     css={css`
@@ -57,7 +68,7 @@ export const CardHeader = ({ children }) => (
   </div>
 );
 
-export const CardBody = ({ children }) => (
+export const CardBody = ({ children }: { children: ReactChild[] }) => (
   <div
     css={css`
       background-color: ${colors.$backgroundLevel3};
@@ -71,7 +82,7 @@ export const CardBody = ({ children }) => (
   </div>
 );
 
-export const CardImage = ({ src }) => (
+export const CardImage = ({ src }: { src: string }) => (
   <img
     src={src}
     css={css`

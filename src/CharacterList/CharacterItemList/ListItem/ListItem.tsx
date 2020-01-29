@@ -1,8 +1,9 @@
-import React from "react";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import React, { ReactChild, ReactText } from "react";
+import { css, jsx } from "@emotion/core";
 import { colors } from "../../../colors";
 
-export const ListItem = ({ children }) => (
+export const ListItem = ({ children }: { children: ReactChild[] }) => (
   <div
     css={css`
       display: flex;
@@ -20,7 +21,7 @@ export const ListItem = ({ children }) => (
   </div>
 );
 
-export const ListItemLeft = ({ children }) => (
+export const ListItemLeft = ({ children }: { children: ReactChild[] }) => (
   <div
     css={css`
       display: flex;
@@ -31,7 +32,7 @@ export const ListItemLeft = ({ children }) => (
   </div>
 );
 
-export const ListItemImage = ({ src, name }) => (
+export const ListItemImage = ({ src, name }: { src: string; name: string }) => (
   <img
     src={src}
     alt={`list-${name}`}
@@ -43,7 +44,7 @@ export const ListItemImage = ({ src, name }) => (
   />
 );
 
-export const ListItemText = ({ children }) => (
+export const ListItemText = ({ children }: { children: ReactText }) => (
   <b
     css={css`
       color: ${colors.$subtitleText};

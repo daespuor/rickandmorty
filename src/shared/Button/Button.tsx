@@ -1,8 +1,15 @@
-import React from "react";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import React, { ReactChild } from "react";
+import { css, jsx } from "@emotion/core";
 import { colors } from "../../colors";
 
-export const Button = ({ children, onClick }) => (
+export const Button = ({
+  children,
+  onClick
+}: {
+  children: ReactChild;
+  onClick: () => void;
+}) => (
   <button
     css={css`
       background-color: ${colors.$subtitleButton};
